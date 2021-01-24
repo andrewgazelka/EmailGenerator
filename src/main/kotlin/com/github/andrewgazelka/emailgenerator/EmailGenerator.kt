@@ -27,10 +27,12 @@ fun emailSequence(input: CharSequence): Sequence<String> {
 
 fun main() {
   val endSequence = sequenceOf("gmail.com", "googlemail.com")
-  emailSequence("andrewgazelka")
+  val total = emailSequence("andrewgazelka")
     .cartesian(endSequence) { a, b -> "$a@$b" }
-    .toList()
-    .forEach {
+    .onEach {
       println(it)
-    }
+    }.count()
+
+  println()
+  println("total $total emails")
 }
